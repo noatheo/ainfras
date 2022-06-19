@@ -17,8 +17,21 @@ jobs:
             curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
             python get-pip.py --user
             python -m pip install --user ansible
+            
+        - name: 'auth'
+          uses: 'google-github-actions/auth@v0'
+          with:
+             credentials_json: '${{ secrets.COMP_SERV_ACC}}'
+        - name: 'compute-ssh'    
+          uses: 'google-github-actions/ssh-compute@v0'
+          with:
+            instance_name: 'microvm1'
+            zone: 'us-east4-c'
+            ssh_private_key: '${{ secrets.SSH_PRIVATE_KEY }}'
+            command: 'echo Hello world'
+          
         - name: Run ansible playbook
           run: |
             echo ${{secrets.SSH_PRIVATE_KEY}} >> key.txt
-            ansible-playbook deployment.staging.yaml -i inventroy.txt --private-key ./key.txt
-        
+            ansible-playbook deployment.staging.yaml -i inventroy.txt 
+      
