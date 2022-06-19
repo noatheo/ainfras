@@ -21,3 +21,4 @@ jobs:
               inventory: |
                 [API]
                 ${{secrets.HOST}}
+              known_hosts: .known_hosts
