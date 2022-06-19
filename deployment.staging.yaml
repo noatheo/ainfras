@@ -4,17 +4,6 @@
   vars:
       - NODE_VERSION: v18.3.0
 
-
-
-- name: Basic usage
-  debug:
-    msg: |
-        "'{{ lookup('env', 'HOME') }}' is the HOME environment variable."
-        "'{{ lookup('env', 'REPO_NAME') }}' is the Reposotiory name."
-
-
-
-
   tasks:
       - name: Copying file with playbook
         become: true
