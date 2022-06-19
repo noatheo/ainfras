@@ -1,7 +1,8 @@
 - name: install and configure The Node Application
   hosts: API_SERVER
 
-  NODE_VERSION: v18.3.0
+  vars:
+      - NODE_VERSION: v18.3.0
 
 
 
