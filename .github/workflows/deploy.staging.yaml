@@ -28,7 +28,7 @@ jobs:
             instance_name: 'microvm1'
             zone: 'us-east4-c'
             ssh_private_key: '${{ secrets.SSH_PRIVATE_KEY }}'
-            command: ansible-playbook deployment.staging.yaml -i inventroy.txt 
+            command: echo "Hello World"
   
         
       
