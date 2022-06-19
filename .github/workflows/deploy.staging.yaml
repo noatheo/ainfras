@@ -5,20 +5,19 @@ on:
         branch: 
             - master
 
-    
+
+
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-lates
         steps:
-        - name: Checkout repo
-          uses: actions/checkout@v2
-        - name: Applying Ansible
-          uses: dawidd6/action-ansible-playbook@v2
-          with:
-              playbook: deployment.staging.yaml
-              directory: ./
-              key: ${{secrets.SSH_PRIVATE_KEY}}
-              inventory: |
-                [API]
-                ${{secrets.HOST}}
-              known_hosts: .known_hosts
+        - name: Checkout repo 
+          uses: actions/checkout@v2  
+        - name: Install Ansible 
+          run : |
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python get-pip.py --user
+            python -m pip install --user ansible
+        - name: Run ansible playbook
+          run: echo "hello"
+        
