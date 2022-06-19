@@ -18,4 +18,6 @@ jobs:
               playbook: deployment.staging.yaml
               directory: ./
               key: ${{secrets.SSH_PRIVATE_KEY}}
-              inventory: ${{secrets.HOST}}
+              inventory: |
+                [API]
+                ${{secrets.HOST}}
