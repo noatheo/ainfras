@@ -13,7 +13,7 @@ jobs:
         - name: Checkout repo
           uses: actions/checkout@v2
         - name: Applying Ansible
-          uses: uses: dawidd6/action-ansible-playbook@v2
+          uses: dawidd6/action-ansible-playbook@v2
           with:
               playbook: deployment.staging.yaml
               directory: ./
