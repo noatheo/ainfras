@@ -19,5 +19,5 @@ jobs:
             python -m pip install --user ansible
         - name: Run ansible playbook
           run: |
-            ansible-playbook deployment.staging.yaml -i inventory.txt --private-key ${{SSH_PRIVATE_KEY}}
+            ansible-playbook deployment.staging.yaml -i inventory.txt --private-key ${{secrets.SSH_PRIVATE_KEY}}
         
