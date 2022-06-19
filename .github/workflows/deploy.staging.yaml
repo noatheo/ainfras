@@ -1,0 +1,21 @@
+name: Deployning API_SERVESES 
+
+on:
+    push:
+        branch: 
+            - master
+
+    
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout repo
+          uses: actions/checkout@v2
+        - name: Applying Ansible
+          uses: uses: dawidd6/action-ansible-playbook@v2
+          with:
+              playbook: deployment.staging.yaml
+              directory: ./
+              key: ${{secrets.SSH_PRIVATE_KEY}}
+              inventory: ${{secrets.HOST}}
