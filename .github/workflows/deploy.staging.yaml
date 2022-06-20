@@ -14,8 +14,8 @@ jobs:
           uses: actions/checkout@v2  
         - name: finding ssh
           run: |
-            ls -a
             echo Key="${{secrets.SSH_PRIVATE_KEY}}" >> sec
+            ls -a
         - name: connecting 
           run: |
             ssh -i /home/runner/ainfras/ainfras/sec dev@35.221.63.71
