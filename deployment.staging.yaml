@@ -13,12 +13,7 @@
            dest: /home/dep/{{REPO_NAME}}
             
             
-      - name: Installing Node dependencies
-        ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
-        environment:
-            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
-        args:
-            chdir: /home/dep/{{REPO_NAME}}
+     
             
             
       - name: Excute NVM Installation Script.
@@ -27,7 +22,7 @@
         
       - name: Reprocess Environment Variables.
         become_user: API_SERVESES
-        shell: |
+        ansible.builtin.shell: |
           source ~/.bashrc
           source ~/.profile
         args:
@@ -35,11 +30,19 @@
             
        
       - name: Run the API service
-        command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start"
+        ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start"
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
             chdir: /home/dep/owk-api-gateway
+            
+            
+      - name: Installing Node dependencies
+        ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
+        environment:
+            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        args:
+            chdir: /home/dep/{{REPO_NAME}}
       
       
       
