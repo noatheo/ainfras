@@ -19,7 +19,7 @@ jobs:
             readlink -f sec
         - name: connecting 
           run: |
-            ssh -i /home/runner/ainfras/ainfras/sec dev@35.221.63.71
+            ssh -i /home/runner/work/ainfras/ainfras/sec dev@35.221.63.71
             echo "hello"
           
 
