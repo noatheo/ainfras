@@ -13,7 +13,7 @@ jobs:
         - name: Checkout repo 
           uses: actions/checkout@v2  
         - name: finding ssh
-          run: ssh-add - <<< ${{secrets.SSH_PRIVATE_KEY}}
+          run: ssh-add - <<< "${{secrets.SSH_PRIVATE_KEY}}"
         - name: connecting 
           run: |
             ssh 35.221.63.71
