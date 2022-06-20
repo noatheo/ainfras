@@ -9,7 +9,7 @@
       - name: Copying file with playbook
         become: true
         copy:
-            src: /home/runner/work/REPO_NAME/REPO_NAME
+            src: /home/runner/work/{{REPO_NAME}}/{{REPO_NAME}}
             dest: /home/dev
             owner: dev
             mode: '0644'
