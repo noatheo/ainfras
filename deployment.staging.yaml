@@ -33,7 +33,13 @@
           source ~/.profile
         args:
             executable: /bin/bash
-            
+     
+      - name: Installing Node dependencies
+        ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
+        environment:
+            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        args:
+            chdir: /home/dep/{{REPO_NAME}}
        
       - name: Run the API service
         ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start"
@@ -43,12 +49,7 @@
             chdir: /home/dep/owk-api-gateway
             
             
-      - name: Installing Node dependencies
-        ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
-        environment:
-            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
-        args:
-            chdir: /home/dep/{{REPO_NAME}}
+     
       
       
       
