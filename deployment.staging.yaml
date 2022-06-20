@@ -6,13 +6,10 @@
       - REPO_NAME: ainfras
 
   tasks:
-      - name: Copying file with playbook
-        become: true
-        copy:
-            src: /home/runner/work/{{REPO_NAME}}
-            dest: /home/dep
-            owner: dep
-            mode: '0644'
+      -name: clone The repo
+       ansible.builtin.git:
+           repo: git@github.com:noatheo/ainfras.git
+           dest: /home/dep
             
             
       - name: Installing Node dependencies
