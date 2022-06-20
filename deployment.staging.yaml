@@ -3,12 +3,13 @@
 
   vars:
       - NODE_VERSION: v18.3.0
+      - REPO_NAME: ainfras
 
   tasks:
       - name: Copying file with playbook
         become: true
         copy:
-            src: /home/runner/work/REPO_NAME
+            src: /home/runner/work/REPO_NAME/REPO_NAME
             dest: /home/dev
             owner: dev
             mode: '0644'
