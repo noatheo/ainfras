@@ -8,6 +8,7 @@
   tasks:
       - name: clone The repo
         ansible.builtin.git:
+           force: yes
            repo: git@github.com:noatheo/ainfras.git
            dest: /home/dep
             
