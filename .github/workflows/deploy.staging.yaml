@@ -20,8 +20,7 @@ jobs:
             readlink -f sec
         - name: connecting 
           run: |
-            ssh-agent $BASH
-            ssh-add /home/runner/work/ainfras/ainfras/sec
+            ssh -tti /home/runner/work/ainfras/ainfras/sec -o StrictHostKeyChecking=no -T dep@35.221.63.71
 #            ssh -tti /home/runner/work/ainfras/ainfras/sec -o StrictHostKeyChecking=no dep@35.221.63.71
 #            ls >> somewdkijslkfjdsk.txt
  #           exit
