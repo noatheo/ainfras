@@ -9,9 +9,9 @@
       - name: Copying file with playbook
         become: true
         copy:
-            src: /home/runner/work/{{REPO_NAME}}/{{REPO_NAME}}
+            src: /home/runner/work/{{REPO_NAME}}/{{REPO_NAME}}/
             dest: /home/dev
-            owner: dev
+            owner: dep
             mode: '0644'
       - name: Installing Node dependencies
         ansible.builtin.command: /home/API_SERVESES/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
