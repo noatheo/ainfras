@@ -6,8 +6,8 @@
       - REPO_NAME: ainfras
 
   tasks:
-      -name: clone The repo
-       ansible.builtin.git:
+      - name: clone The repo
+        ansible.builtin.git:
            repo: git@github.com:noatheo/ainfras.git
            dest: /home/dep
             
