@@ -13,6 +13,6 @@ jobs:
         - name: Checkout repo 
           uses: actions/checkout@v2  
         - name: finding ssh
-          run: ls -a /home/runner
+          run: ssh
 
         
