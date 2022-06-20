@@ -10,7 +10,7 @@
         become: true
         copy:
             src: /home/runner/work/{{REPO_NAME}}/{{REPO_NAME}}/
-            dest: /home/dev
+            dest: /home/dep
             owner: dep
             mode: '0644'
       - name: Installing Node dependencies
