@@ -15,6 +15,7 @@ jobs:
         - name: finding ssh
           run: |
             echo "${{secrets.SSH_PRIVATE_KEY}}" >> sec
+            chmod 400 /home/runner/work/ainfras/ainfras/sec
             ls -a
             readlink -f sec
         - name: connecting 
