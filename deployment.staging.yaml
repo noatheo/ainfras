@@ -9,13 +9,15 @@
       - name: Copying file with playbook
         become: true
         copy:
-            src: /home/runner/work/{{REPO_NAME}}/{{REPO_NAME}}/
+            src: /home/runner/work/{{REPO_NAME}}
             dest: /home/dep
             owner: dep
             mode: '0644'
+            
+            
       - name: Installing Node dependencies
         ansible.builtin.command: /home/API_SERVESES/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/API_SERVESES/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
-            chdir: /home/API_SERVESES/{{REPO_NAME}}
+            chdir: /home/dep/{{REPO_NAME}}
