@@ -12,12 +12,12 @@
            repo: git@github.com:noatheo/ainfras.git
            dest: /home/dep/{{REPO_NAME}}
             
-      - name: Save Defult bashrc
-        become_user: dep
-        ansible.builtin.shell: |
-          cat .bashrc > dbashrc 
-        args:
-            executable: /bin/bash
+#       - name: Save Defult bashrc
+#         become_user: dep
+#         ansible.builtin.shell: |
+#           cat .bashrc > dbashrc 
+#         args:
+#             executable: /bin/bash
         
      
             
