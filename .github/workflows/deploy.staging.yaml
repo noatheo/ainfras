@@ -20,9 +20,20 @@ jobs:
             readlink -f sec
         - name: connecting 
           run: |
-            ssh -tti /home/runner/work/ainfras/ainfras/sec -o StrictHostKeyChecking=no dep@35.221.63.71
-            ls >> somewdkijslkfjdsk.txt
-            exit
+            ssh-agent $BASH
+            ssh-add /home/runner/work/ainfras/ainfras/sec
+#            ssh -tti /home/runner/work/ainfras/ainfras/sec -o StrictHostKeyChecking=no dep@35.221.63.71
+#            ls >> somewdkijslkfjdsk.txt
+ #           exit
+        - name: Install Ansible 
+          run : |
+            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            python get-pip.py --user
+            python -m pip install --user ansible
+ 
+        - name: applying ansible
+          run: ansible-playbook deployment.staging.yam -i inventory
+            
           
 
         
