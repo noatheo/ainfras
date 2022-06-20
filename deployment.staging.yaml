@@ -39,7 +39,7 @@
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
-            chdir: /home/dep/{{REPO_NAME}}
+            chdir: /home/dep/owk-api-gateway
        
       - name: Run the API service
         ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start"
