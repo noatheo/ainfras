@@ -1,2 +1,2 @@
 [API]
-dep@35.221.63.71
+dep@35.221.63.71  ansible_ssh_private_key_file=/home/runner/work/ainfras/ainfras/sec
