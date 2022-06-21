@@ -7,6 +7,14 @@
       
 
   tasks:
+  
+      - name: Stop the API Service
+        ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 stop all"
+        environment:
+            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        args:
+            chdir: /home/dep/owk-api-gateway
+            
       - name: Clone The Repo
         ansible.builtin.git:
            force: yes
@@ -29,13 +37,6 @@
      
       - name: Installing Node Dependencies
         ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
-        environment:
-            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
-        args:
-            chdir: /home/dep/owk-api-gateway
-            
-      - name: Stop the API Service
-        ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 stop all"
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
