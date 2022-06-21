@@ -21,6 +21,11 @@
 #             executable: /bin/bash
         
      
+      - name: print env variable.
+        become_user: dep
+        ansible.builtin.shell: echo "hey it worked" 
+        args:
+          chdir: /home/dep/{{HELLO}}
             
             
       - name: Excute NVM Installation Script.
