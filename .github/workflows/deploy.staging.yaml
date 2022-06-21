@@ -21,8 +21,7 @@ jobs:
             echo "${{secrets.SSH_PRIVATE_KEY}}" >> keyfile
             chmod 400 /home/runner/work/ainfras/ainfras/keyfile
             echo "${{secrets.INVENTORY}}" >> inventory
-            ls -a
-            readlink -f sec
+
         - name: connecting 
           run: |
             ssh -tti /home/runner/work/ainfras/ainfras/keyfile -o StrictHostKeyChecking=no -T dep@35.221.63.71
@@ -35,6 +34,9 @@ jobs:
  
         - name: applying ansible
           run: ansible-playbook deployment.staging.yaml -i inventory
+          
+        - name: Deleting secret files
+          run: rm -f keyfile inventory
             
           
 
