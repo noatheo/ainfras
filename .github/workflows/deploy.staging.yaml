@@ -8,8 +8,7 @@ concurrency:
     group: staging-pipeline-${{ github.head_ref }}
     cancel-in-progress: true
 
-env:
-    HELLO: "hdjdksahjhsakdjhsakjdhakj" 
+
 
 jobs:
     build:
