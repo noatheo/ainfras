@@ -19,8 +19,9 @@ jobs:
           uses: actions/checkout@v2  
         - name: finding ssh
           run: |
-            echo "${{secrets.SSH_PRIVATE_KEY}}" >> sec
-            chmod 400 /home/runner/work/ainfras/ainfras/sec
+            echo "${{secrets.SSH_PRIVATE_KEY}}" >> keyfile
+            chmod 400 /home/runner/work/ainfras/ainfras/keyfile
+            echo "${{secrets.INVENTORY}}" >> inventory
             ls -a
             readlink -f sec
         - name: connecting 
