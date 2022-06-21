@@ -9,7 +9,7 @@ gcloud secrets list | awk '{ print $1 }'|sed "1d" | sed 's/^/export /' | sed 's/
 paste ex.txt secrets.txt > hel.txt
 
 sed -i 's/=[^=\"]*\"/=\"/g' hel.txt
-cat dbashrc > .bashrc
-cat hel.txt >> .bashrc
+cat ~/dbashrc > ~/.bashrc
+cat hel.txt >> ~/.bashrc
 
 rm -f env.sh secrets.txt ex.txt hel.txt 
