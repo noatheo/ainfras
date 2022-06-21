@@ -4,6 +4,7 @@
   vars:
       - NODE_VERSION: v18.3.0
       - REPO_NAME: ainfras
+      - HOST: lookup('env', 'HELLO')
 
   tasks:
       - name: clone The repo
