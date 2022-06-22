@@ -47,6 +47,8 @@
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
             chdir: /home/dep/owk-api-gateway
+           
+
        
       - name: Run the API Service
         ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start -i max"
@@ -54,6 +56,15 @@
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
             chdir: /home/dep/owk-api-gateway
+            
+      - name: Adding Environment Variable
+        become_user: dep
+        ansible.builtin.shell:
+          bash -c "source ~/.bashrc"
+          bash -c "source ~/.profile"
+          bash -c "pm2 stop all"
+        args:
+          chdir: /home/dep/owk-api-gateway
             
             
      
