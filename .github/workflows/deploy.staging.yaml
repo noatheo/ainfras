@@ -3,7 +3,7 @@ name: Deployning API_SERVESES
 on:
     push:
         branches: 
-            - master
+            - main
 concurrency:
     group: staging-pipeline-${{ github.head_ref }}
     cancel-in-progress: true
