@@ -20,7 +20,7 @@
        
       - name: Stop the API Service
         become: yes
-        ansible.builtin.command: "runuser -u deployment -- pm2 stop all"
+        ansible.builtin.command: "runuser -u dep -- pm2 stop all"
      
                
       - name: Adding Environment Variable
