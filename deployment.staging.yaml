@@ -8,11 +8,14 @@
 
   tasks:
   
-      - name: Stop the API Service
-        become_user: dep
-        ansible.builtin.command: "pm2 stop all"
-        args:
-            chdir: /home/dep/owk-api-gateway
+#       - name: Stop the API Service
+#         become_user: dep
+#         ansible.builtin.command: "pm2 stop all"
+#         args:
+#             chdir: /home/dep/owk-api-gateway
+
+      - name: pm2 stop
+      - ansible.builtin.raw: pm2 stop all
             
       - name: Clone The Repo
         ansible.builtin.git:
