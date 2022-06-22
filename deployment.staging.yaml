@@ -19,6 +19,7 @@
 #             chdir: /home/dep/{{REPO_NAME}}
        
       - name: Stop the API Service
+        become: yes
         ansible.builtin.command: "runuser -l  deployment -c 'pm2 stop all'"
      
                
