@@ -15,7 +15,7 @@
 #             chdir: /home/dep/owk-api-gateway
 
       - name: pm2 stop
-      - ansible.builtin.raw: pm2 stop all
+        ansible.builtin.raw: pm2 stop all
             
       - name: Clone The Repo
         ansible.builtin.git:
