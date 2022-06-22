@@ -4,28 +4,20 @@
   vars:
       - NODE_VERSION: v18.3.0
       - REPO_NAME: ainfras
+      - USER: dep
       
 
   tasks:
   
-#       - name: Stop the API Service
-#         become_user: dep
-#         ansible.builtin.command: "pm2 stop all"
-#         args:
-#             chdir: /home/dep/owk-api-gateway
-
-      - name: pm2 stop
-        become: yes
-        ansible.builtin.command: "pm2 stop all"
-        environment:
-          PATH: "{{ ansible_env.PATH }}"
 
             
-      - name: Clone The Repo
-        ansible.builtin.git:
-           force: yes
-           repo: git@github.com:noatheo/ainfras.git
-           dest: /home/dep/{{REPO_NAME}}
+      - name: Stop the API Service
+        ansible.builtin.command: "/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 stop all"
+        environment:
+            PATH: "{{ ansible_env.PATH }}:/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        args:
+            chdir: /home/dep/{{REPO_NAME}}
+            
                
       - name: Adding Environment Variable
         become_user: dep
