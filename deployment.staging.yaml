@@ -58,6 +58,7 @@
             chdir: /home/dep/owk-api-gateway
             
       - name: Adding Environment Variable
+        become: yes 
         become_user: dep
         ansible.builtin.shell:
            source ~/.profile
@@ -65,8 +66,7 @@
            pm2 stop all 
         args:
           chdir: /home/dep/owk-api-gateway
-        executable:
-          /bin/bash
+          executable: /bin/bash
             
             
      
