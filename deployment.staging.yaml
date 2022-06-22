@@ -18,7 +18,7 @@
 #         args:
 #             chdir: /home/dep/{{REPO_NAME}}
        
- name: Adding Environment Variable
+      - name: Adding Environment Variable
         become_user: dep
         ansible.builtin.shell: bash -c "pm2 stop all"
         args:
