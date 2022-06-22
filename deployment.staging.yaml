@@ -9,9 +9,7 @@
   tasks:
   
       - name: Stop the API Service
-        ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 stop all"
-        environment:
-            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        ansible.builtin.command: "pm2 stop all"
         args:
             chdir: /home/dep/owk-api-gateway
             
