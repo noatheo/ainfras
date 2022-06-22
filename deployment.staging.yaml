@@ -16,7 +16,6 @@
 
       - name: pm2 stop
         become: yes
-        become_user: dep
         ansible.builtin.command: "pm2 stop all"
         environment:
           PATH: "{{ ansible_env.PATH }}"
