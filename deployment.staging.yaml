@@ -20,7 +20,10 @@
        
       - name: Adding Environment Variable
         become_user: dep
-        ansible.builtin.shell: bash -c "pm2 stop all"
+        ansible.builtin.shell:
+          bash -c "source ~/.bashrc"
+          bash -c "source ~/.profile"
+          bash -c "pm2 stop all"
         args:
           chdir: /home/dep/owk-api-gateway
           
