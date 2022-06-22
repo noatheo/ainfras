@@ -43,7 +43,7 @@
             chdir: /home/dep/owk-api-gateway
        
       - name: Run the API Service
-        ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start"
+        ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start -i max"
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
