@@ -60,7 +60,7 @@
       - name: Adding Environment Variable
         become_user: dep
         ansible.builtin.shell:
-          bash -c "source ~/deployment/.bashrc"
+          bash -c "source ~/dep/.bashrc"
           
           bash -c "pm2 stop all"
         args:
