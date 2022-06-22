@@ -18,11 +18,12 @@
 #         args:
 #             chdir: /home/dep/{{REPO_NAME}}
        
-      - name: Stop the API Service
-        become: yes
-        ansible.builtin.command: "runuser -u dep -- pm2 stop all"
-     
-               
+ name: Adding Environment Variable
+        become_user: dep
+        ansible.builtin.shell: bash -c "pm2 stop all"
+        args:
+          chdir: /home/dep/owk-api-gateway
+          
       - name: Adding Environment Variable
         become_user: dep
         ansible.builtin.shell: bash envadd.sh
