@@ -9,6 +9,8 @@
   tasks:
   
       - name: Stop the API Service
+        become: yes
+        become_user: dep
         ansible.builtin.command: "pm2 stop all"
         args:
             chdir: /home/dep/owk-api-gateway
