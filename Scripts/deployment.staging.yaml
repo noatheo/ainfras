@@ -1,1 +1,70 @@
+- name: install and configure The Node Application
+  hosts: API
 
+  vars:
+      - NODE_VERSION: v18.3.0
+      - REPO_NAME: ainfras
+      - USER: dep
+      
+
+  tasks:
+  
+
+            
+#       - name: Stop the API Service
+#         ansible.builtin.command: "/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 stop all"
+#         environment:
+#             PATH: "{{ ansible_env.PATH }}:/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin"
+#         args:
+#             chdir: /home/dep/{{REPO_NAME}}
+       
+      - name: Adding Environment Variable
+        become_user: dep
+        ansible.builtin.shell:
+          bash -c "source ~/.bashrc"
+          bash -c "source ~/.profile"
+          bash -c "pm2 stop all"
+        args:
+          chdir: /home/dep/owk-api-gateway
+          
+      - name: Adding Environment Variable
+        become_user: dep
+        ansible.builtin.shell: bash envadd.sh
+        args:
+          chdir: /home/dep/{{REPO_NAME}}
+        
+      - name: Reprocess Environment Variables.
+        become_user: dep
+        ansible.builtin.shell: |
+          source ~/.bashrc
+          source ~/.profile
+        args:
+            executable: /bin/bash
+     
+      - name: Installing Node Dependencies
+        ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
+        environment:
+            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        args:
+            chdir: /home/dep/owk-api-gateway
+           
+
+       
+      - name: Run the API Service
+        ansible.builtin.command: "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start -i max"
+        environment:
+            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        args:
+            chdir: /home/dep/owk-api-gateway
+            
+      - name: Adding Environment Variable
+        become: yes 
+        become_user: dep
+        ansible.builtin.shell:
+           source ~/.profile
+           source ~/.bashrc
+           pm2 stop all 
+        args:
+          chdir: /home/dep/owk-api-gateway
+          executable: /bin/bash
+            
