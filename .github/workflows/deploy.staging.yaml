@@ -33,7 +33,7 @@ jobs:
             python -m pip install --user ansible
  
         - name: applying ansible
-          run: ansible-playbook deployment.staging.yaml -i inventory
+          run: ansible-playbook ${{secrets.WORKSPACE}}scripts/deployment.staging.yaml -i inventory
           
         - name: Deleting secret files
           run: rm -f keyfile inventory
