@@ -31,7 +31,7 @@
         become_user: dep
         ansible.builtin.shell: bash envadd.sh
         args:
-          chdir: /home/dep/Scripts
+          chdir: /home/dep/"{{REPO_NAME}}"/Scripts
         
       - name: Reprocess Environment Variables.
         become_user: dep
