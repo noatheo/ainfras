@@ -11,6 +11,8 @@ paste ex.txt secrets.txt > hel.txt
 sed -i 's/=[^=\"]*\"/=\"/g' hel.txt
 cat ~/dbashrc > ~/.bashrc
 cat hel.txt >> ~/.bashrc
+cat hel.txt > /etc/profile.d/envars.sh
+source /etc/profile
 
 #rm -f env.sh secrets.txt ex.txt hel.txt 
 
