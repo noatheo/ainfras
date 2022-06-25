@@ -68,4 +68,6 @@
         args:
           chdir: /home/dep/owk-api-gateway
           executable: /bin/bash
-            
+      - name: Basic usage
+        ansible.builtin.debug:
+          msg: "'{{ lookup('ansible.builtin.env', 'NODE_ENV') }}' 
