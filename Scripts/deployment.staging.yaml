@@ -31,7 +31,7 @@
         become_user: dep
         ansible.builtin.shell: bash envadd.sh
         args:
-          chdir: /home/dep/{{REPO_NAME}}
+          chdir: /home/dep/Scripts
         
       - name: Reprocess Environment Variables.
         become_user: dep
@@ -40,6 +40,7 @@
           source ~/.profile
         args:
             executable: /bin/bash
+            chdir: /home/dep
      
       - name: Installing Node Dependencies
         ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
