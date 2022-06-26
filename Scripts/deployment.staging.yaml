@@ -24,7 +24,7 @@
           
       - name: Adding Environment Variable
         become_user: '{{USER}}'
-        ansible.builtin.shell: bash envadd.sh
+        ansible.builtin.shell: bash -ilc "envadd.sh"
         args:
           chdir: "/home/dep/{{REPO_NAME}}/Scripts"
         
