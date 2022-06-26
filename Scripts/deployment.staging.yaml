@@ -12,11 +12,9 @@
             
       - name: delete all the API Services
         become_user: '{{USER}}'
-        ansible.builtin.shell: bash -ilc "/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 delete all"
+        ansible.builtin.shell: bash -ilc "pm2 delete all"
         register: ret
         failed_when: ("[PM2][ERROR]" in ret.stdout)
-        environment:
-            PATH: "{{ ansible_env.PATH }}:/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
             chdir: '~/{{REPO_NAME}}'
        
@@ -24,7 +22,7 @@
           
       - name: Adding Environment Variable
         become_user: '{{USER}}'
-        ansible.builtin.shell: bash -ilc "envadd.sh"
+        ansible.builtin.shell: bash -il "envadd.sh"
         args:
           chdir: "/home/dep/{{REPO_NAME}}/Scripts"
         
@@ -46,11 +44,11 @@
            
 
        
-      - name: Run the API Service
-        become_user: '{{USER}}'
-        ansible.builtin.shell: bash -ilc "pm2 start npm -- start -i max"
-        args:
-            chdir: '~/owk-api-gateway'
+#       - name: Run the API Service
+#         become_user: '{{USER}}'
+#         ansible.builtin.shell: bash -ilc "pm2 start npm -- start -i max"
+#         args:
+#             chdir: '~/owk-api-gateway'
             
      
       
