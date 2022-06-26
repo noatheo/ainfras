@@ -42,7 +42,7 @@
       
       - name: Give Access to the NODE to open port 80
         become_user: 'root'
-        ansible.buitlin.shell: setcap 'cap_net_bind_service=+ep' /home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/node
+        ansible.buitlin.shell: "setcap 'cap_net_bind_service=+ep' /home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/node"
 
        
       - name: Run the API Service
