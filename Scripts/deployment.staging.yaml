@@ -13,6 +13,8 @@
       - name: delete all the API Services
         become_user: '{{USER}}'
         ansible.builtin.shell: bash -ilc "/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 delete all"
+        register: ret
+        failed_when: ("[PM2][WARN] No process found")
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
