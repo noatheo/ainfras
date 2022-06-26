@@ -11,23 +11,23 @@
   tasks:
             
       - name: delete all the API Services
-        become_user: {{USER}}
+        become_user: '{{USER}}'
         ansible.builtin.shell: bash -ilc "/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 delete all"
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
-            chdir: ~/{{REPO_NAME}}
+            chdir: '~/{{REPO_NAME}}'
        
       
           
       - name: Adding Environment Variable
-        become_user: {{USER}}
+        become_user: '{{USER}}'
         ansible.builtin.shell: bash envadd.sh
         args:
           chdir: "/home/dep/{{REPO_NAME}}/Scripts"
         
       - name: Adding Environment Variable
-        become_user: {{USER}}
+        become_user: '{{USER}}'
         ansible.builtin.shell:
           bash -ilc "source ~/.bashrc"
           bash -ilc "source ~/.profile"
@@ -35,22 +35,22 @@
           chdir: ~/owk-api-gateway
      
       - name: Installing Node Dependencies
-        become_user: {{USER}}
+        become_user: '{{USER}}'
         ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
-            chdir: ~/owk-api-gateway
+            chdir: '~/owk-api-gateway'
            
 
        
       - name: Run the API Service
-        become_user: {{USER}}
+        become_user: '{{USER}}'
         ansible.builtin.shell: bash -ilc "/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/pm2 start npm -- start -i max"
         environment:
             PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
         args:
-            chdir: ~/owk-api-gateway
+            chdir: '~/owk-api-gateway'
             
      
       
