@@ -11,7 +11,7 @@ paste ex.txt secrets.txt > hel.txt
 sed -i 's/=[^=\"]*\"/=\"/g' hel.txt
 cat ~/dbashrc > ~/.bashrc
 cat hel.txt >> ~/.bashrc
-source /home/dep/.bashrc
+
 
 
 
