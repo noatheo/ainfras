@@ -47,7 +47,6 @@
       - name: Run the API Service
         become_user: '{{USER}}'
         ansible.builtin.shell: |
-          bash -ilc "source .bashrc"
           bash -ilc "pm2 start npm -- start -i max"
           
         args:
