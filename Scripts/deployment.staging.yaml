@@ -31,8 +31,8 @@
       - name: Adding Environment Variable
         become_user: '{{USER}}'
         ansible.builtin.shell: |
-          bash -ilc source .bashrc
-          bash -ilc source .profile
+          bash -ilc "source .bashrc"
+          bash -ilc "source .profile"
         args:
           chdir: "/home/{{USER}}"
                
