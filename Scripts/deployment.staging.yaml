@@ -29,14 +29,13 @@
           chdir: "/home/dep/{{REPO_NAME}}/Scripts"
         
       - name: Adding Environment Variable
-        become_user: 'root'
+        become_user: '{{USER}}'
         ansible.builtin.shell: |
-          source .bashrc
-          source .profile
+          bash -ilc source .bashrc
+          bash -ilc source .profile
         args:
           chdir: "/home/{{USER}}"
-          executable: /bin/bash
-     
+               
       - name: Installing Node Dependencies
         become_user: '{{USER}}'
         ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
