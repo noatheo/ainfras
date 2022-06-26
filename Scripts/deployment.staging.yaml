@@ -30,11 +30,12 @@
         
       - name: Adding Environment Variable
         become_user: '{{USER}}'
-        ansible.builtin.shell:
-          bash -ilc "source ~/.bashrc"
-          bash -ilc "source ~/.profile"
+        ansible.builtin.shell: |
+            source ~/.bashrc
+            source ~/.profile
         args:
-          chdir: ~/owk-api-gateway
+          chdir: "/home/{{USER}}"
+          executable: /bin/bash
      
       - name: Installing Node Dependencies
         become_user: '{{USER}}'
