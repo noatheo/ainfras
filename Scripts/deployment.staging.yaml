@@ -1,4 +1,4 @@
-- name: install and configure The Node Application
+- name: Install and configure The Node Application
   hosts: API
   become: yes
 
@@ -22,23 +22,21 @@
           
       - name: Adding Environment Variable
         become_user: '{{USER}}'
-        ansible.builtin.shell: bash -il "envadd.sh"
+        ansible.builtin.shell: bash -ilc "envadd.sh"
         args:
-          chdir: "/home/dep/{{REPO_NAME}}/Scripts"
+          chdir: "~/{{REPO_NAME}}/Scripts"
         
       - name: Adding Environment Variable
         become_user: '{{USER}}'
         ansible.builtin.shell: |
-          bash -ic "source .bashrc"
-          bash -ic "source .profile"
+          bash -ilc "source .bashrc"
+          bash -ilc "source .profile"
         args:
           chdir: "/home/{{USER}}"
                
       - name: Installing Node Dependencies
         become_user: '{{USER}}'
-        ansible.builtin.command: /home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin/npm i
-        environment:
-            PATH: "{{ ansible_env.PATH }}:/home/dep/.nvm/versions/node/{{NODE_VERSION}}/bin"
+        ansible.builtin.shell: bash -ilc "npm i"
         args:
             chdir: '~/owk-api-gateway'
            
@@ -48,7 +46,6 @@
         become_user: '{{USER}}'
         ansible.builtin.shell: |
           bash -ilc "pm2 start npm -- start -i max"
-          
         args:
             chdir: '~/owk-api-gateway'
             
