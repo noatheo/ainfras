@@ -34,18 +34,18 @@
         args:
           chdir: "/home/{{USER}}"
                
+      - name: 'Give Access to the NODE to open port 80'
+        ansible.buitlin.shell: |
+          "setcap 'cap_net_bind_service=+ep' /home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/node"
+        args:
+          chdir: '~'        
+               
       - name: Installing Node Dependencies
         become_user: '{{USER}}'
         ansible.builtin.shell: bash -ilc "npm ci"
         args:
           chdir: '~/owk-api-gateway'
-      
-      - name: 'Give Access to the NODE to open port 80'
-        ansible.buitlin.shell: |
-          "setcap 'cap_net_bind_service=+ep' /home/{{USER}}/.nvm/versions/node/{{NODE_VERSION}}/bin/node"
-        args:
-          chdir: '~'
-
+    
        
       - name: Run the API Service
         become_user: '{{USER}}'
