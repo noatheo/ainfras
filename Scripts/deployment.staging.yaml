@@ -20,13 +20,13 @@
        
       
           
-     - name: Adding Environment Variable
-       become_user: {{USER}}
-       ansible.builtin.shell: bash envadd.sh
-       args:
-         chdir: "/home/dep/{{REPO_NAME}}/Scripts"
+      - name: Adding Environment Variable
+        become_user: {{USER}}
+        ansible.builtin.shell: bash envadd.sh
+        args:
+          chdir: "/home/dep/{{REPO_NAME}}/Scripts"
         
-     - name: Adding Environment Variable
+      - name: Adding Environment Variable
         become_user: {{USER}}
         ansible.builtin.shell:
           bash -ilc "source ~/.bashrc"
