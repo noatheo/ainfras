@@ -22,7 +22,7 @@
         become_user: '{{USER}}'
         ansible.builtin.git:
           repo: 'git@github.com:noatheo/ainfras.git'
-          dest: /home/dep
+          dest: /home/dep/ainfras
           version: main
           force: yes
        
