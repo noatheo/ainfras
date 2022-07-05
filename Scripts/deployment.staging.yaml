@@ -17,6 +17,14 @@
         failed_when: ("[PM2][ERROR]" in ret.stdout)
         args:
             chdir: '~/{{REPO_NAME}}'
+            
+      - name: Cloning The Repo
+        become_user: '{{USER}}'
+        ansible.builtin.git:
+          repo: 'git@github.com:noatheo/ainfras.git'
+          dest: /home/dep
+          version: main
+          force: yes
        
       
           
